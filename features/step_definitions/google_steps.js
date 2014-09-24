@@ -1,11 +1,24 @@
+var CucumberWorld = require('../support/world').World;
+//var Browser = require("zombie");
+//var assert = require("assert");
 
 var googleSteps = function() {
   var Given = When = Then = this.defineStep;
-//  this.World = CucumberJsExampleWorld;
+  this.World = CucumberWorld;
 
   Given(/^I am on Google$/, function(callback) {
     console.log("I am on Google");
-      callback();
+//      var browser = Browser.create({debug:true});
+//      browser.visit(
+//          "http://www.codefordream.com/",
+//          function(err) {
+//              assert.ok(browser.success);
+//
+//              callback();
+//          }
+//      );
+      this.home_page.visit(callback);
+//      callback();
   });
 
   When(/^I search for "(.*)"$/, function(query, callback) {

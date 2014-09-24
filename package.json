@@ -9,7 +9,9 @@
   "dependencies": {
       "cucumber": "latest",
       "html5": "latest",
-      "zombie": "latest"
+      "zombie": "latest",
+      "phantomjs": "latest"
+
   },
   "devDependencies": {
 
