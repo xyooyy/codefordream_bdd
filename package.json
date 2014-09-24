@@ -1,0 +1,16 @@
+{
+  "name": "cucumber-js-example",
+  "description": "A demo of Cucumber.js running against the web",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "~v0.10.24"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+      "cucumber": "latest",
+      "html5": "latest",
+      "zombie": "latest"
+  }
+}
