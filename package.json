@@ -7,10 +7,11 @@
     "node": "~v0.10.24"
   },
   "dependencies": {
-  },
-  "devDependencies": {
       "cucumber": "latest",
       "html5": "latest",
       "zombie": "latest"
+  },
+  "devDependencies": {
+
   }
 }
