@@ -3,36 +3,20 @@ var CucumberWorld = require('../support/world').World;
 //var assert = require("assert");
 
 var googleSteps = function() {
-  console.log("googleSteps");
   var Given = When = Then = this.defineStep;
   this.World = CucumberWorld;
 
-  Given(/^I am on Google$/, function(callback) {
-    console.log("I am on Google");
-//    this.World.visitGoogle(function(){return;});
-//      var browser = Browser.create({debug:true});
-//      browser.visit(
-//          "http://www.codefordream.com/",
-//          function(err) {
-//              assert.ok(browser.success);
-//
-//              callback();
-//          }
-//      );
-      this.home_page.visit(callback);
+  Given(/^I am on Codefordream$/, function(callback) {
+    this.home_page.visit(callback);
 //      callback();
   });
 
-  When(/^I search for "(.*)"$/, function(query, callback) {
-      console.log("I search for " + query);
-      this.home_page.query(callback);
-      callback();
+  When(/^Codefordream user login$/, function(query, callback) {
+      this.home_page.show_login(callback);
+      this.home_page.input_user_and_pwd(callback);
+      this.home_page.press_login(callback);
   });
 
-  Then(/^I see a link to "(.*)"$/, function(url, callback) {
-    console.log("I see a link to " + url);
-      callback();
-  });
 };
 
 module.exports = googleSteps;

@@ -4,6 +4,5 @@ Feature: Google for Cucumber
   I want to find Cucumber resources on Google
 
   Scenario: find cukes.info
-    Given I am on Google
-    When I search for "Cucumber BDD"
-    Then I see a link to "http://cukes.info/"
+    Given I am on Codefordream
+    When Codefordream user login
