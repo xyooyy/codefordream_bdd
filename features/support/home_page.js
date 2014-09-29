@@ -48,7 +48,7 @@ HomePage.prototype.press_login = function()
 HomePage.prototype.login_succ = function()
 {
     var welcome = this.browser.querySelector(".welcome");
-    console.log(welcome.toString());
+    //console.log(welcome.toString());
 
 }
 
