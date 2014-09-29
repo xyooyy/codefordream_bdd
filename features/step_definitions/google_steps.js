@@ -1,13 +1,15 @@
-var CucumberWorld = require('../support/world').World;
+var CucumberWorld = require('../support_bak/world').World;
 //var Browser = require("zombie");
 //var assert = require("assert");
 
 var googleSteps = function() {
+  console.log("googleSteps");
   var Given = When = Then = this.defineStep;
   this.World = CucumberWorld;
 
   Given(/^I am on Google$/, function(callback) {
     console.log("I am on Google");
+//    this.World.visitGoogle(function(){return;});
 //      var browser = Browser.create({debug:true});
 //      browser.visit(
 //          "http://www.codefordream.com/",
@@ -23,6 +25,7 @@ var googleSteps = function() {
 
   When(/^I search for "(.*)"$/, function(query, callback) {
       console.log("I search for " + query);
+      this.home_page.query(callback);
       callback();
   });
 

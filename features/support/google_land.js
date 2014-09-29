@@ -1,5 +1,5 @@
 var Browser = require("zombie");
-var HTML5  = require("html5").HTML5
+var HTML5  = require("html5");
 var assert = require("assert");
 
 var GoogleLand = function(world) {
@@ -8,8 +8,8 @@ var GoogleLand = function(world) {
 };
 
 GoogleLand.prototype.visitGoogle = function(callback) {
-  this.browser.visit(
-      console.log("visit")
+    console.log("visit");
+    this.browser.visit(
     "http://www.google.com",
     function(err, browser, status) {
       if (err)
