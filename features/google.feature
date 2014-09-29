@@ -6,3 +6,4 @@ Feature: Google for Cucumber
   Scenario: find cukes.info
     Given I am on Codefordream
     When Codefordream user login
+#    Then welcome,xyooyy
