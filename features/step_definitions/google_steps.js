@@ -1,4 +1,4 @@
-var CucumberWorld = require('../support_bak/world').World;
+var CucumberWorld = require('../support/world').World;
 //var Browser = require("zombie");
 //var assert = require("assert");
 

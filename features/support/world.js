@@ -1,7 +1,7 @@
-var HomePage = require('./google_land');
+var HomePage = require('./home_page');
 
-var CucumberJsExampleWorld = function() {
-  console.log("CucumberJsExampleWorld");
-  this.google = new GoogleLand();
+var CucumberWorld = function(callback) {
+    this.home_page = new HomePage();
+    callback();
 };
-exports.World = CucumberJsExampleWorld;
+module.exports.World = CucumberWorld;
