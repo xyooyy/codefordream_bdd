@@ -3,7 +3,7 @@ Feature: Google for Cucumber
   As a BDDer
   I want to find Cucumber resources on Google
 
-  Scenario: find cukes.info
+  Scenario: open codefordream
     Given I am on Codefordream
-    When Codefordream user login
+#    When Code for dream user login
 #    Then welcome,xyooyy
