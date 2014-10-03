@@ -12,10 +12,12 @@ var googleSteps = function() {
     callback();
   });
 
-//  When(/^Code for dream user login$/, function(query, callback) {
-//
-//      callback();
-//  });
+  When(/^Code for dream user login$/, function( callback) {
+
+      //this.home_page.input_user_and_pwd();
+//      this.home_page.press_login();
+      callback();
+  });
 };
 //      this.home_page.show_login( function(error){
 //          if(error)
