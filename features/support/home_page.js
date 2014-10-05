@@ -15,17 +15,16 @@ HomePage.prototype.visit = function(callback) {
 //    var page;
     phridge.spawn()
         .then(function (phantom) {
-            phantom.run("h1", function (selector, resolve) {
+            phantom.run("#switch-to-login", function (selector, resolve) {
 
-                console.log("begin");
+                console.log(selector);
                 var page = webpage.create();
 
                 page.open("http://www.codefordream.com", function () {
-                    var text = page.evaluate(function () {
-                        var temp =  document.getElementById("switch-to-login");
+                    var text = page.evaluate(function (selector) {
+                        var temp =  document.querySelector(selector);
                         click(temp);
-                        return temp.toString();
-
+                        return selector;
                         function click(el){
                             var ev = document.createEvent("MouseEvent");
                             ev.initMouseEvent(
@@ -38,25 +37,17 @@ HomePage.prototype.visit = function(callback) {
                             );
                             el.dispatchEvent(ev);
                         }
-                    });
+                    },selector);
+
                     setTimeout(function () {
-                        console.log(page);
-                        page.render("login.png");
-                        resolve(page);
+                            console.log(text);
+                             page.render("login.png");
+                            resolve(page);
                     }, 5000);
 
-
                 })
+            }).then(function (page) {
             })
-            .then(function (page) {
-                    page.evaluate(function()
-                    {
-                        console.log(document.title);
-                    })
-                    //getElementById("switch-to-login");
-//                    console.log(page);
-
-            });
         });
     callback();
 };
