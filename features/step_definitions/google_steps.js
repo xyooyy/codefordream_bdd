@@ -16,6 +16,7 @@ var googleSteps = function() {
 
       //this.home_page.input_user_and_pwd();
 //      this.home_page.press_login();
+
       callback();
   });
 };

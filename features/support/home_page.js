@@ -1,25 +1,63 @@
-var Browser = require("zombie");
-var assert = require("assert");
+var phridge = require('phridge');
+//var assert = require("assert");
 
-var HomePage = function(world) {
-  this.browser =  Browser.create({debug:true});
-  Browser.localhost("http://www.codefordream.com");
+var HomePage = function() {
+
 };
 //
+
+
+
 HomePage.prototype.visit = function(callback) {
     console.log("test");
     var me = this;
-    this.browser.visit("/",
-    function(err) {
-        assert.ok(me.browser.success);
-        //me.show_login(function(){
-            me.input_user_and_pwd();
-            me.press_login();
-            me.check_login();
-        //});
-    });
-    //this.browser.clickLink(".header-btn",callback);
+    //var phantomProcess = phridge.spawn()
+//    var page;
+    phridge.spawn()
+        .then(function (phantom) {
+            phantom.run("h1", function (selector, resolve) {
 
+                console.log("begin");
+                var page = webpage.create();
+
+                page.open("http://www.codefordream.com", function () {
+                    var text = page.evaluate(function () {
+                        var temp =  document.getElementById("switch-to-login");
+                        click(temp);
+                        return temp.toString();
+
+                        function click(el){
+                            var ev = document.createEvent("MouseEvent");
+                            ev.initMouseEvent(
+                                "click",
+                                true /* bubble */, true /* cancelable */,
+                                window, null,
+                                0, 0, 0, 0, /* coordinates */
+                                false, false, false, false, /* modifier keys */
+                                0 /*left*/, null
+                            );
+                            el.dispatchEvent(ev);
+                        }
+                    });
+                    setTimeout(function () {
+                        console.log(page);
+                        page.render("login.png");
+                        resolve(page);
+                    }, 5000);
+
+
+                })
+            })
+            .then(function (page) {
+                    page.evaluate(function()
+                    {
+                        console.log(document.title);
+                    })
+                    //getElementById("switch-to-login");
+//                    console.log(page);
+
+            });
+        });
     callback();
 };
 
@@ -31,24 +69,18 @@ HomePage.prototype.visit = function(callback) {
 HomePage.prototype.show_login = function(callback) {
     console.log("show_login");
 
-    this.browser.clickLink(".header-btn",callback);
+    this.browser.fill.clickLink(".header-btn",callback);
 };
 
 HomePage.prototype.input_user_and_pwd = function() {
+    var user_field = this.browser.document.getElementById("reg-user-name");
+    user_field.value = "xyooyy198404122";
 
-    console.log("input_user_and_pwd");
+    var password_field = this.browser.document.getElementById("reg-pwd");
+    password_field.value = "31415926";
 
-        var user_field = this.browser.document.getElementById("reg-user-name");
-        //assert(user_field, "no user field");
-        user_field.value = "xyooyy198404121";
-
-        var password_field = this.browser.document.getElementById("reg-pwd");
-        //assert(password_field, "no pwd feild");
-        password_field.value = "31415926";
-        var repassword_field = this.browser.document.getElementById("reg-repwd");
-        repassword_field.value = "31415926";
-        console.log(user_field.toString());
-        console.log(password_field.toString());
+    var repassword_field = this.browser.document.getElementById("reg-repwd");
+    repassword_field.value = "31415926";
 }
 
 HomePage.prototype.press_login = function()
@@ -57,7 +89,7 @@ HomePage.prototype.press_login = function()
 
     var button = this.browser.document.querySelector("#sign-up-btn");
     button.focus();
-    console.log(button.toString());
+    console.log(button.textContent.trim());
     this.browser.fire(button, "click",false);
 }
 
