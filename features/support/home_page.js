@@ -1,4 +1,5 @@
 var phridge = require('phridge');
+var promise = require('promise');
 //var assert = require("assert");
 
 var HomePage = function() {
@@ -20,11 +21,34 @@ HomePage.prototype.visit = function(callback) {
                 console.log(selector);
                 var page = webpage.create();
 
+                page.onConsoleMessage = function(msg){
+                    console.log(msg);
+                };
+
                 page.open("http://www.codefordream.com", function () {
                     var text = page.evaluate(function (selector) {
                         var temp =  document.querySelector(selector);
+                        var login = document.querySelector('#login-btn');
+
                         click(temp);
+
+                        setTimeout(function(){
+                            var user_field = document.getElementById("login-user-name");
+                            var password_field = document.getElementById("login-pwd");
+                            user_field.value = "xyooyy";
+                            password_field.value = "31415926";
+                            click(login);
+                            setTimeout(function(){
+                               var login_info = document.getElementsByClassName("welcome").item(0).innerText;
+                               if(login_info == 'Welcome,xyooyy'){
+                                        console.log('login succeed');
+                                }
+                            },1100)
+
+                        },1000);
+
                         return selector;
+
                         function click(el){
                             var ev = document.createEvent("MouseEvent");
                             ev.initMouseEvent(
@@ -41,12 +65,14 @@ HomePage.prototype.visit = function(callback) {
 
                     setTimeout(function () {
                             console.log(text);
-                             page.render("login.png");
-                            resolve(page);
+                            page.render("login.png");
+                            resolve(text);
+                        phantom.exit();
                     }, 5000);
 
                 })
-            }).then(function (page) {
+            }).then(function (text) {
+                console.log(text);
             })
         });
     callback();
