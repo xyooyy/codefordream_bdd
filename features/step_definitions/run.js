@@ -1,6 +1,6 @@
 var CucumberWorld = require('../support/world.js').World;
 
-var googleSteps = function () {
+module.exports = function () {
     this.World = CucumberWorld;
 
     this.Then('run', function (callback) {
@@ -23,5 +23,3 @@ var googleSteps = function () {
         this.spooky.run();
     });
 };
-
-module.exports = googleSteps;

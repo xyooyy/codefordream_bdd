@@ -1,13 +1,9 @@
-//var HomePage = require('./home_page');
 var util = require('util');
 var Spooky = require('spooky');
-var assert = require("assert");
 
 var CucumberWorld = function (callback) {
     var spooky;
     var world = this;
-   // this.baseUrl = 'http://localhost:' + process.env.TEST_PORT;
-    //this.home_page = new HomePage();
     try {
         spooky = world.spooky = new Spooky({
             casper: {
@@ -26,7 +22,7 @@ var CucumberWorld = function (callback) {
         console.trace('Spooky.listen failed');
     }
 
-    spooky.debug = true;
+    //spooky.debug = true;
 
     spooky.errors = [];
     spooky.on('error', function (error) {

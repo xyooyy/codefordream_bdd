@@ -1,4 +1,4 @@
-var googleSteps = function () {
+module.exports = function () {
     this.Before(function (callback) {
         this.spooky.start();
         callback();
@@ -10,4 +10,4 @@ var googleSteps = function () {
     });
 };
 
-module.exports = googleSteps;
+
