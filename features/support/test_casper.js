@@ -1,3 +1,4 @@
+/*
 var casper = require('casper').create();
 
 casper.start('http://www.codefordream.com/', function() {
@@ -23,4 +24,4 @@ casper.thenClick('#login-btn',function(){
     this.echo("login succeed");
 });
 
-casper.run();
+casper.run();*/

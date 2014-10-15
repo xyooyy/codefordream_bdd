@@ -1,3 +1,4 @@
+/*
 var phridge = require('phridge');
 var promise = require('promise');
 //var assert = require("assert");
@@ -53,11 +54,21 @@ HomePage.prototype.visit = function(callback) {
                             var ev = document.createEvent("MouseEvent");
                             ev.initMouseEvent(
                                 "click",
-                                true /* bubble */, true /* cancelable */,
+                                true */
+/* bubble *//*
+, true */
+/* cancelable *//*
+,
                                 window, null,
-                                0, 0, 0, 0, /* coordinates */
-                                false, false, false, false, /* modifier keys */
-                                0 /*left*/, null
+                                0, 0, 0, 0, */
+/* coordinates *//*
+
+                                false, false, false, false, */
+/* modifier keys *//*
+
+                                0 */
+/*left*//*
+, null
                             );
                             el.dispatchEvent(ev);
                         }
@@ -150,4 +161,4 @@ module.exports = HomePage;
 //        {
 //            var welcome = me.browser.querySelector("#welcome");
 //            console.log(welcome.className);
-//        });
+//        });*/

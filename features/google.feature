@@ -6,4 +6,5 @@ Feature: Google for Cucumber
   Scenario: open codefordream
     Given I am on Codefordream
     When Code for dream user login
-#    Then welcome,xyooyy
+    Then welcome,xyooyy
+    And run

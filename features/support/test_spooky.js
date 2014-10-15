@@ -1,3 +1,4 @@
+/*
 try {
     var Spooky = require('spooky');
 } catch (e) {
@@ -35,6 +36,8 @@ var spooky = new Spooky({
         this.thenClick('#login-btn',function(){
             this.emit('hello','login succeed');
             this.wait(1000,function(){
+                var login = this.getHTML('b');
+                this.emit('hello',login);
                 this.capture('login.png');
             });
         });
@@ -50,6 +53,7 @@ spooky.on('error', function (e, stack) {
     }
 });
 
+*/
 /*
  // Uncomment this block to see all of the things Casper has to say.
  // There are a lot.
@@ -57,7 +61,8 @@ spooky.on('error', function (e, stack) {
  spooky.on('console', function (line) {
  console.log(line);
  });
- */
+ *//*
+
 
 spooky.on('hello', function (greeting) {
     console.log(greeting);
@@ -65,6 +70,7 @@ spooky.on('hello', function (greeting) {
 
 spooky.on('log', function (log) {
     if (log.space === 'remote') {
-        console.log(log.message.replace(/ \- .*/, ''));
+        console.log(log.message.replace(/ \- .*//*
+, ''));
     }
-});
+});*/
