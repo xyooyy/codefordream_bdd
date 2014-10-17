@@ -22,7 +22,7 @@ var CucumberWorld = function (callback) {
         console.trace('Spooky.listen failed');
     }
 
-    //spooky.debug = true;
+    spooky.debug = true;
 
     spooky.errors = [];
     spooky.on('error', function (error) {
@@ -41,7 +41,7 @@ var CucumberWorld = function (callback) {
         }
     });
 
-    spooky.on('log', function (entry) {
+    /*spooky.on('log', function (entry) {
         if (!spooky.debug) { return; }
         var message = entry.message;
         var event = (message.event || '').toLowerCase();
@@ -61,7 +61,7 @@ var CucumberWorld = function (callback) {
             console.log(spooky.options.port + ':');
             console.dir(entry);
         }
-    });
+    });*/
 
     spooky.on('casper_log', function (info) {
         console.log(info);

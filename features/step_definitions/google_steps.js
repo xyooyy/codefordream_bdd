@@ -1,5 +1,4 @@
 var CucumberWorld = require('../support/world').World;
-var assert = require("assert");
 
 var googleSteps = function() {
   var Given = When = Then = this.defineStep;
@@ -8,7 +7,7 @@ var googleSteps = function() {
   Given(/^I am on Codefordream$/, function(callback) {
       this.spooky.thenOpen('http://www.codefordream.com');
       this.spooky.then(function(){
-              this.capture('on_codefordream.png');
+              //this.capture('on_codefordream.png');
       });
       console.log("I am on Codefordream");
       callback();
@@ -26,7 +25,7 @@ var googleSteps = function() {
           });
           this.thenClick('#login-btn',function(){
               this.wait(1000,function(){
-                  this.capture('login.png');
+                  //this.capture('login.png');
               });
           });
       });
@@ -37,6 +36,13 @@ var googleSteps = function() {
         this.spooky.then(function(){
             this.capture('login.png');
             this.emit('casper_log',this.getHTML('b'));
+            phantom.casperTest = true;
+            var casper = this;
+            this.test.begin('judge login status',1,function(test){
+                test.assertEqual(casper.getHTML('b'),'Welcome,xyooyy');
+                test.done();
+            })
+
             });
         callback();
     })

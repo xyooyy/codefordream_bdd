@@ -9,8 +9,7 @@
   "dependencies": {
       "cucumber": "latest",
       "html5": "latest",
-      "spooky": "latest",
-      "casperjs":"latest"
+      "spooky": "0.2.4"
   },
   "devDependencies": {
 

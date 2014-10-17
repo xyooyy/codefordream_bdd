@@ -6,7 +6,7 @@ module.exports = function () {
     this.Then('run', function (callback) {
         var world = this;
 
-        /*this.spooky.then(function () {
+        this.spooky.then(function () {
             this.emit('tests.complete', this.test.testResults);
         });
 
@@ -18,7 +18,7 @@ module.exports = function () {
             } else {
                 callback();
             }
-        }).bind(world));*/
+        }).bind(world));
 
         this.spooky.run();
     });
