@@ -161,19 +161,26 @@ function insert_keyword_function(keyword,keyword_function,cucumber_code){
 
 function make_feature_file_content(feature_file_json){
     var content = 'Feature:'+feature_file_json.feature.content+'\n\t';
-    if(!feature_file_json.feature.scenario){
-        for(var index in feature_file_json.feature.scenarios){
-            content += 'Scenario:'+feature_file_json.feature.scenarios[index].scenario+'\n\t\t';
-            content += output_keyword_content(feature_file_json.feature.scenarios[index],'givens');
-            content += output_keyword_content(feature_file_json.feature.scenarios[index],'whens');
-            content += output_keyword_content(feature_file_json.feature.scenarios[index],'thens');
-        }
+
+    for(var index in feature_file_json.feature.scenarios){
+        var scenario = feature_file_json.feature.scenarios[index];
+        content += 'Scenario:'+scenario.scenario+'\n\t\t';
+        content += output_keyword_content(scenario,'givens');
+        content += output_keyword_content(scenario,'whens');
+        content += output_keyword_content(scenario,'thens');
     }
     content += '\tAnd run';
     return content;
 }
 
 function output_keyword_content(scenario,keyword) {
+    if(!scenario[keyword]){
+        return one_keyword_content(scenario,keyword);
+    }
+    return many_keyword_content(scenario,keyword);
+}
+
+function one_keyword_content(scenario,keyword){
     if (!scenario[keyword]) {
         var keyword_content = upper_keyword(keyword) + '\x20' + scenario[keyword.substring(0, keyword.length - 1)] + '\n\t';
         if (keyword == 'thens') {
@@ -181,6 +188,9 @@ function output_keyword_content(scenario,keyword) {
         }
         return keyword_content + '\t';
     }
+}
+
+function many_keyword_content(scenario,keyword){
     var content = '';
     for (var index in scenario[keyword]) {
         var keyword_array_content = upper_keyword(keyword) + '\x20' + scenario[keyword][index] + '\n\t';
@@ -191,7 +201,6 @@ function output_keyword_content(scenario,keyword) {
     }
     return content;
 }
-
 function upper_keyword(keyword){
     var new_keyword;
     new_keyword = keyword[0].toUpperCase()+keyword.substring(1,keyword.length-1);
@@ -200,9 +209,10 @@ function upper_keyword(keyword){
 
 function config(){
     for(var i = 0;i < json_files.length;i++){
-        var feature_data = read_json_file(json_files[i]);
-        var feature_file_name = json_files[i].split('.')[0]+'.feature';
-        var step_definitions_file_name = json_files[0].split('.')[0]+'_steps.js';
+        var feature_data = read_json_file(json_files[i]),
+        feature_file_name = json_files[i].split('.')[0]+'.feature',
+        step_definitions_file_name = json_files[0].split('.')[0]+'_steps.js';
+
         create_feature_file(feature_data.feature_file,feature_file_name);
         create_step_definitions_file(feature_data,step_definitions_file_name);
     }
