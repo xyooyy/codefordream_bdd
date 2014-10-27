@@ -2,10 +2,10 @@ var fs = require('fs');
 var spooky_api = require('./spooky_api.js');
 var casper_api = require('./casper_api.js');
 
-var json_files = fs.readdirSync('./features_json');
+var json_files = fs.readdirSync('./features/features_json');
 
 function read_json_file(file_name){
-    var base_path = './features_json/';
+    var base_path = './features/features_json/';
     var feature_json = fs.readFileSync(base_path+file_name,'utf-8');
     return JSON.parse(feature_json);
 }
@@ -13,7 +13,7 @@ function read_json_file(file_name){
 function create_feature_file(feature_file_json){
     var file_name = json_files[0].split('.')[0]+'.feature';
 //    console.log(file_name)
-    fs.open('./'+file_name,'w',0666,function(err,fd){
+    fs.open('./features'+file_name,'w',0666,function(err,fd){
         if(err){
             console.log(err);
         }else{
@@ -30,7 +30,7 @@ function create_feature_file(feature_file_json){
 
 function create_step_definitions_file(feature_data){
     var file_name = json_files[0].split('.')[0];
-    fs.open('./step_definitions/'+file_name+'_steps.js','w',0666,function(err,fd){
+    fs.open('./features/step_definitions/'+file_name+'_steps.js','w',0666,function(err,fd){
         if(err){
             console.log(err);
         }else{
