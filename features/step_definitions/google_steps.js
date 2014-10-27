@@ -32,6 +32,7 @@ var googleSteps = function() {
 
       callback();
   });
+
     Then(/^welcome,xyooyy$/,function(callback){
         this.spooky.then(function(){
             this.capture('login.png');

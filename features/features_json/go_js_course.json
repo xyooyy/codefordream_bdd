@@ -43,7 +43,11 @@
                 }
             },
             "then":{
-
+                "step_1":{
+                    "test_begin":{
+                    "content":"login succeed",
+                    "asserts":[{"assert_equal":{"expected":"Welcome,xyooyy","actual":"casper.getHTML('b')"}}]
+                }}
             }
         }]
     }

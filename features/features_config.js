@@ -12,7 +12,7 @@ function read_json_file(file_name){
 
 function create_feature_file(feature_file_json){
     var file_name = json_files[0].split('.')[0]+'.feature';
-    console.log(file_name)
+//    console.log(file_name)
     fs.open('./'+file_name,'w',0666,function(err,fd){
         if(err){
             console.log(err);
@@ -46,7 +46,7 @@ function create_step_definitions_file(feature_data){
 }
 
 function make_step_definitions_file_content(feature_data){
-    console.log(feature_data.step_definitions_file)
+//    console.log(feature_data.step_definitions_file)
     var given_description = feature_data.feature_file.feature.scenarios[0].given;
     var when_description = feature_data.feature_file.feature.scenarios[0].when;
     var then_description = feature_data.feature_file.feature.scenarios[0].then;
@@ -57,15 +57,11 @@ function make_step_definitions_file_content(feature_data){
     var when_code = insert_keyword_steps(when);
     var then_code = insert_keyword_steps(then);
 
-//    console.log(feature_data.step_definitions_file.scenarios[0]);
-//    console.log(spooky_api.find('open_url','http://www.codefordream.com'));
-//    var given_code = spooky_api.find('open_url','http://www.codefordream.com');
     var cucumber_code = make_keywords_function();
     cucumber_code = insert_keyword_description('given',given_description,cucumber_code).replace(/@given_code/,given_code);
     cucumber_code = insert_keyword_description('when',when_description,cucumber_code).replace(/@when_code/,when_code);
     cucumber_code = insert_keyword_description('then',then_description,cucumber_code).replace(/@then_code/,then_code);
     return cucumber_code;
-//    return make_keywords_function().replace(/@given_code/,given_code).replace(/@given_description/,given_description);
 }
 
 function insert_keyword_steps(keyword){
@@ -78,7 +74,13 @@ function insert_keyword_steps(keyword){
             break;
         }
         if('open_url' in keyword['step_'+i]){
-            content +=spooky_api.find('open_url',keyword['step_'+i]['open_url']);
+            content += spooky_api.find('open_url',keyword['step_'+i]['open_url']);
+        }
+        if('fill_form_id' in keyword['step_'+i]){
+            casper_content += casper_api.fill_form_by_id(keyword['step_'+i].fill_form_id);
+        }
+        if('test_begin' in keyword['step_'+i]){
+            casper_content += casper_api.test_begin(keyword['step_'+i].test_begin);
         }
         if('callback' in keyword['step_'+i]){
             casper_content += insert_step_callback_function(keyword['step_'+i],callback_content);
@@ -89,32 +91,11 @@ function insert_keyword_steps(keyword){
                 }
             }
         }
-
-        /*if('callback' in keyword['step_'+i]){
-            for(var key in keyword['step_'+i]){
-                if(casper_api.find_out(key)){
-
-                    callback_content = casper_api.find(key,keyword['step_'+i][key]);
-                    for(var key_2 in keyword['step_'+i].callback){
-                        if(casper_api.find_out(key_2)){
-                            callback_content.replace(/@callback/,casper_api.find(key_2,keyword['step_'+i].callback[key_2]));
-                            console.log(callback_content)
-                        }
-                    }
-                }
-            }
-        }else{
-            for(var key_3 in keyword['step_'+i]) {
-                if(casper_api.find_out(key_3)) {
-                    callback_content = casper_api.find(key_3, keyword['step_' + i][key_3]);
-                }
-            }
-        }*/
         i++;
     }
 
     content +='\nthis.spooky.then(function(){'+casper_content+'})';
-    console.log(content);
+//    console.log(content);
     return content;
 }
 
@@ -127,7 +108,7 @@ function insert_step_callback_function(step,callback_content){
                 for(var key_2 in step.callback){
                     if(casper_api.find_out(key_2)){
                         var cb_new = cb_new_1.replace(/@callback/,casper_api.find(key_2,step.callback[key_2]));
-                        console.log(cb_new)
+//                        console.log(cb_new)
                         return insert_step_callback_function(step.callback.callback,cb_new);
                     }
                 }
@@ -161,7 +142,7 @@ function make_keywords_function(){
     var when_function = "\n When(/^@when_description$/, function(callback) {@when_code; callback();\n})"
     var then_function = "\n Then(/^@then_description$/, function(callback) {@then_code; callback();\n})"
     var cucumber_code ="var CucumberWorld = require('../support/world').World;\n";
-    cucumber_code += "var Steps = function() {\nvar Given = When = Then = this.defineStep;\n this.World = CucumberWorld;@given;@when;@then; \n}\n module.exports = Steps;"
+    cucumber_code += "var Steps = function() {\nvar Given = When = Then = this.defineStep;\n this.World = CucumberWorld;@given;@when;@then; \n};\n module.exports = Steps;"
     cucumber_code = insert_keyword_function('given',given_function,cucumber_code);
     cucumber_code = insert_keyword_function('when',when_function,cucumber_code);
     cucumber_code = insert_keyword_function('then',then_function,cucumber_code);
@@ -191,7 +172,7 @@ function make_feature_file_content(feature_file_json){
             content += output_keyword_content(feature_file_json.feature.scenarios[index],'thens');
         }
     }
-    console.log(content);
+//    console.log(content);
     return content;
 }
 
