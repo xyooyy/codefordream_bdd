@@ -2,18 +2,16 @@ var fs = require('fs');
 var spooky_api = require('./spooky_api.js');
 var casper_api = require('./casper_api.js');
 
-var json_files = fs.readdirSync('./features/features_json');
+var json_files = fs.readdirSync('./features_json');
 
 function read_json_file(file_name){
-    var base_path = './features/features_json/';
+    var base_path = './features_json/';
     var feature_json = fs.readFileSync(base_path+file_name,'utf-8');
     return JSON.parse(feature_json);
 }
 
-function create_feature_file(feature_file_json){
-    var file_name = json_files[0].split('.')[0]+'.feature';
-//    console.log(file_name)
-    fs.open('./features'+file_name,'w',0666,function(err,fd){
+function create_feature_file(feature_file_json,file_name){
+    fs.open('./features/'+file_name,'w',0666,function(err,fd){
         if(err){
             console.log(err);
         }else{
@@ -28,9 +26,8 @@ function create_feature_file(feature_file_json){
     })
 }
 
-function create_step_definitions_file(feature_data){
-    var file_name = json_files[0].split('.')[0];
-    fs.open('./features/step_definitions/'+file_name+'_steps.js','w',0666,function(err,fd){
+function create_step_definitions_file(feature_data,file_name){
+    fs.open('./features/step_definitions/'+file_name,'w',0666,function(err,fd){
         if(err){
             console.log(err);
         }else{
@@ -95,7 +92,7 @@ function insert_keyword_steps(keyword){
     }
 
     content +='\nthis.spooky.then(function(){'+casper_content+'})';
-//    console.log(content);
+    console.log(content);
     return content;
 }
 
@@ -172,7 +169,7 @@ function make_feature_file_content(feature_file_json){
             content += output_keyword_content(feature_file_json.feature.scenarios[index],'thens');
         }
     }
-//    console.log(content);
+    content += '\tAnd run';
     return content;
 }
 
@@ -202,9 +199,13 @@ function upper_keyword(keyword){
 }
 
 function config(){
-    var feature_data = read_json_file(json_files[0]);
-    //create_feature_file(feature_data.feature_file);
-    create_step_definitions_file(feature_data);
+    for(var i = 0;i < json_files.length;i++){
+        var feature_data = read_json_file(json_files[i]);
+        var feature_file_name = json_files[i].split('.')[0]+'.feature';
+        var step_definitions_file_name = json_files[0].split('.')[0]+'_steps.js';
+        create_feature_file(feature_data.feature_file,feature_file_name);
+        create_step_definitions_file(feature_data,step_definitions_file_name);
+    }
 }
 
 config();
