@@ -201,6 +201,7 @@ function many_keyword_content(scenario,keyword){
     }
     return content;
 }
+
 function upper_keyword(keyword){
     var new_keyword;
     new_keyword = keyword[0].toUpperCase()+keyword.substring(1,keyword.length-1);
