@@ -40,7 +40,7 @@ var Steps = function () {
             var casper = this;
             this.wait(4000,function(){
                 this.test.begin("hello world challenge succeed", 1, function (test) {
-                    test.assertDoesntExist('div.btn-row hide#succeed_btn_grop_2');
+                    test.assertDoesntExist('div.btn-row.hide#succeed_btn_grop_2');
                     test.done();
                 })
             })
