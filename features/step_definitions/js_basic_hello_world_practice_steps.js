@@ -11,8 +11,6 @@ var Steps = function () {
             })
         });
         this.spooky.thenOpen("http://www.codefordream.com/courses/js_basic/sections/section_0/practices/normal/practice_hello_world")
-        this.spooky.then(function () {
-        });
         callback();
     });
     When(/^input correct answer and submit it$/, function (callback) {
@@ -34,17 +32,19 @@ var Steps = function () {
     });
     Then(/^successful challenge$/, function (callback) {
         this.spooky.then(function () {
-            this.thenClick('#submit_btn');
-            this.wait(8000,function(){
+            this.click('#submit_btn');
+            this.wait(4000,function(){
                 this.capture('hello.png');
             })
             phantom.casperTest = true;
-//            var casper = this;
-//            this.test.begin("login succeed", 1, function (test) {
-//                test.assertEqual("Welcome,xyooyy", casper.getHTML('b'));
-//                test.done();
-//            })
-        });
+            var casper = this;
+            this.wait(4000,function(){
+                this.test.begin("hello world challenge succeed", 1, function (test) {
+                    test.assertDoesntExist('div.btn-row hide#succeed_btn_grop_2');
+                    test.done();
+                })
+            })
+        })
         callback();
     });
 };

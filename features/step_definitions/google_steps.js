@@ -21,9 +21,11 @@ var googleSteps = function() {
                   'input#login-pwd':'31415926'
               });
           });
-          this.wait(1000,function(){
-              this.click('#login-btn');
-          });
+          this.thenClick("#login-btn", function () {
+              this.wait(1000, function () {
+                  this.capture("login.png")
+              })
+          })
       });
 
       callback();
@@ -31,7 +33,6 @@ var googleSteps = function() {
 
     Then(/^welcome,xyooyy$/,function(callback){
         this.spooky.then(function(){
-            //this.capture('login.png');
             this.emit('casper_log',this.getHTML('b'));
             phantom.casperTest = true;
             var casper = this;

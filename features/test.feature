@@ -1,6 +1,6 @@
 Feature:login on codefordream
-	Scenario:open codefordream
-		Given I am on codefordream
-		When Code for dream user login
-		Then Welcome,xyooyy
+	Scenario:open code for dream
+		Given voctor on codefordream
+		When Code for dream voctor login
+		Then Welcome,voctor
 		And run

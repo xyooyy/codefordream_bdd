@@ -11,9 +11,6 @@ var CucumberWorld = function (callback) {
                 logLevel: 'debug'
             },
             child: {
-                /*port: 8081,
-                 spooky_lib: './',
-                 script: './lib/bootstrap.js'*/
                 transport:'http'
             }
         }, onCreated);
