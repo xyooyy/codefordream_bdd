@@ -5,5 +5,12 @@
             "file_name":"challenge_0.js",
             "answer_path":"./practices_answer/hello_world.js"
         }
+    },
+    "code_comments":{
+        "practice_url":"http://www.codefordream.com/courses/js_basic/sections/section_1/practices/normal/practice_code_comments",
+        "answer_file_info":{
+            "file_name":"challenge_1.js",
+            "answer_path":"./practices_answer/code_comments.js"
+        }
     }
 }
