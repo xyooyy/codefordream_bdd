@@ -1,0 +1,1 @@
+console.log('hello%20world')%3B

@@ -1,0 +1,9 @@
+{
+    "hello_world":{
+        "practice_url":"http://www.codefordream.com/courses/js_basic/sections/section_0/practices/normal/practice_hello_world",
+        "answer_file_info":{
+            "file_name":"challenge_0.js",
+            "answer_path":"./practices_answer/hello_world.js"
+        }
+    }
+}
