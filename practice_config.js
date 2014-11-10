@@ -1,14 +1,17 @@
 var fs = require('fs');
 var readline = require("readline");
 var child_process = require('child_process');
+var query_string = require("querystring");
 var practice_test_code = fs.readFileSync('./practice_test_template.js','utf-8');
 var practice_config_json = JSON.parse(fs.readFileSync('./practice_config.json','utf-8'));
 
 function create_practice_test_file_content(one_practice_config_data){
     var answer_code = fs.readFileSync(one_practice_config_data.answer_file_info.answer_path,'utf-8');
+    var result = query_string.escape(answer_code)
     var file_id = one_practice_config_data.answer_file_info.file_name.split('.')[0];
+
     practice_test_code = practice_test_code.replace(/@practice_url/,one_practice_config_data.practice_url);
-    practice_test_code = practice_test_code.replace(/@practice_answer/,answer_code);
+    practice_test_code = practice_test_code.replace(/@practice_answer/,result);
     practice_test_code = practice_test_code.replace(/@file_id/,file_id);
     practice_test_code = practice_test_code.replace(/@file_name/g,one_practice_config_data.answer_file_info.file_name);
     return practice_test_code;
@@ -43,7 +46,7 @@ function get_testing_practice_name(){
         if (answer in practice_config_json) {
             create_practice_test_file(answer);
             child_process.exec('cucumber.js ./features/one_practice.feature',function(){
-                console.log('Practice Test Succeed');
+                console.log('Practice Test Complete');
             })
             console.log('Testing...');
             reader.close();

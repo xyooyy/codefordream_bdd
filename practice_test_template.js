@@ -33,7 +33,7 @@ var Steps = function () {
         this.spooky.then(function () {
             this.click('#submit_btn');
             this.wait(4000,function(){
-                this.capture('hello.png');
+                this.capture('practice_test_result.png');
             })
             phantom.casperTest = true;
             this.wait(4000,function(){
