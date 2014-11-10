@@ -45,8 +45,8 @@ function get_testing_practice_name(){
     reader.question("Which practice do you test,please input its name:", function(answer) {
         if (answer in practice_config_json) {
             create_practice_test_file(answer);
-            child_process.exec('cucumber.js ./features/one_practice.feature',function(){
-                console.log('Practice Test Complete');
+            child_process.exec('cucumber.js ./features/one_practice.feature',function(error,stdout,stderr){
+                console.log('Stdout: ' + stdout);
             })
             console.log('Testing...');
             reader.close();
