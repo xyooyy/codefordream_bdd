@@ -6,15 +6,30 @@ var practice_test_code = fs.readFileSync('./practice_test_template.js','utf-8');
 var practice_config_json = JSON.parse(fs.readFileSync('./practice_config.json','utf-8'));
 
 function create_practice_test_file_content(one_practice_config_data){
-    var answer_code = fs.readFileSync(one_practice_config_data.answer_file_info.answer_path,'utf-8');
-    var result = query_string.escape(answer_code)
-    var file_id = one_practice_config_data.answer_file_info.file_name.split('.')[0];
-
-    practice_test_code = practice_test_code.replace(/@practice_url/,one_practice_config_data.practice_url);
-    practice_test_code = practice_test_code.replace(/@practice_answer/,result);
-    practice_test_code = practice_test_code.replace(/@file_id/,file_id);
-    practice_test_code = practice_test_code.replace(/@file_name/g,one_practice_config_data.answer_file_info.file_name);
+    practice_test_code = replace_practice_url_in_test_template(one_practice_config_data);
+    practice_test_code = replace_practice_answer_in_test_template(one_practice_config_data);
+    practice_test_code = replace_file_id_in_test_template(one_practice_config_data);
+    practice_test_code = replace_file_name_in_test_template(one_practice_config_data);
     return practice_test_code;
+}
+
+function replace_practice_url_in_test_template(one_practice_config_data){
+    return practice_test_code.replace(/@practice_url/,one_practice_config_data.practice_url);
+}
+
+function replace_practice_answer_in_test_template(one_practice_config_data){
+    var answer_code = fs.readFileSync(one_practice_config_data.answer_file_info.answer_path,'utf-8');
+    var result = query_string.escape(answer_code);
+    return practice_test_code.replace(/@practice_answer/,result);
+}
+
+function replace_file_id_in_test_template(one_practice_config_data){
+    var file_id = one_practice_config_data.answer_file_info.file_name.split('.')[0];
+    return practice_test_code.replace(/@file_id/,file_id);
+}
+
+function replace_file_name_in_test_template(one_practice_config_data){
+    return practice_test_code.replace(/@file_name/g,one_practice_config_data.answer_file_info.file_name);
 }
 
 function create_practice_test_file(test_practice_name){
