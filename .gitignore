@@ -5,3 +5,4 @@ node_modules
 .rvmrc
 npm-debug.log
 .idea
+*.png
