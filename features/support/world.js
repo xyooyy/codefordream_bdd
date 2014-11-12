@@ -1,9 +1,11 @@
 var util = require('util');
 var Spooky = require('spooky');
+var Encode = require('../../encode').encode_practice_answer;
 
 var CucumberWorld = function (callback) {
     var spooky;
     var world = this;
+    world.encode = Encode;
     try {
         spooky = world.spooky = new Spooky({
             casper: {

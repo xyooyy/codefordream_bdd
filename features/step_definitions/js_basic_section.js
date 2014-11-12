@@ -2,7 +2,8 @@ var CucumberWorld = require('../support/world').World;
 var Steps = function () {
     var Given = When = Then = this.defineStep;
     this.World = CucumberWorld;
-    Given(/^I am on Hello World practice$/, function (callback) {
+    Given(/^I am on (.+) practice with (.+)$/, function (name,url,callback) {
+        console.log('----------------Testing '+name+' practice--------------');
         this.spooky.then(function(){
             phantom.addCookie({
                 'name':'codedu-online-db',
@@ -10,37 +11,40 @@ var Steps = function () {
                 'domain':'www.codefordream.com'
             })
         });
-        this.spooky.thenOpen("http://www.codefordream.com/courses/js_basic/sections/section_0/practices/normal/practice_hello_world")
+        this.spooky.thenOpen(url)
         callback();
     });
-    When(/^input correct answer and submit it$/, function (callback) {
-        this.spooky.then(function () {
-            var a = this.evaluate(function(){
+    When(/^input (.+) in (.+) and submit it$/, function (answer,file_name,callback) {
+        console.log('================'+answer,file_name)
+        var answer_encode = this.encode(answer);
+        var file_id = file_name.split('.')[0];
+
+        this.spooky.then([{file_name:file_name,file_id:file_id,answer_encode:answer_encode},function () {
+            var a = this.evaluate(function(file_name,file_id,answer_encode){
                 var editor_manager_id = "editor_manager";
                 editor_manager = new EditorManager(editor_manager_id);
-
-                var file = document.getElementById("challenge_0");
+                var file = document.getElementById(file_id);
                 var isReadOnly = false;
-                file.value = 'console.log("hello world")';
-                editor_manager.files['challenge_0.js'] = file.value;
-                editor_manager.editors['challenge_0.js'] = editor_manager.create_editor(file,isReadOnly);
+                file.value = window.decodeURIComponent(answer_encode);
+                editor_manager.files[file_name] = file.value;
+                editor_manager.editors[file_name] = editor_manager.create_editor(file,isReadOnly);
                 return 1;
-            });
+            },file_name,file_id,answer_encode);
             this.emit('casper_log',a);
-        });
+        }]);
         callback();
     });
     Then(/^successful challenge$/, function (callback) {
         this.spooky.then(function () {
             this.click('#submit_btn');
-            this.wait(4000,function(){
+            this.wait(6000,function(){
                 this.capture('hello.png');
             })
             phantom.casperTest = true;
             var casper = this;
-            this.wait(4000,function(){
+            this.wait(5000,function(){
                 this.test.begin("hello world challenge succeed", 1, function (test) {
-                    test.assertDoesntExist('div.btn-row.hide#succeed_btn_grop_2');
+                    test.assertExists('div.hide#fail_btn_grop');
                     test.done();
                 })
             })
