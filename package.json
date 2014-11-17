@@ -7,9 +7,10 @@
     "node": "~v0.10.24"
   },
   "dependencies": {
-      "cucumber": "latest",
-      "html5": "latest",
-      "spooky": "0.2.4"
+      "cucumber": "0.4.4",
+      "webdriverio":"*",
+      "assert":"1.1.2",
+      "phantomjs":"1.9.12"
   },
   "devDependencies": {
 
