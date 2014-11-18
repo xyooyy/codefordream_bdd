@@ -12,8 +12,6 @@ var client = webdriverio.remote({
     logLevel: 'verbose'
 });
 
-client.init();
-
 
 var World = function World(callback) {
     this.assert = assert;
