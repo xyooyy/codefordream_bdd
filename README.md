@@ -1,5 +1,6 @@
 Run with :
     
     1）npm install
-    2）npm install -g phantomjs@1.9.7 and npm install -g casperjs@1.1.0-beta3
-    3）./node_modules/cucumber/bin/cucumber.js
+    2）curl -O http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar(应该需要翻墙)
+    3）java -jar selenium-server-standalone-2.43.1.jar
+    4）./node_modules/cucumber/bin/cucumber.js
