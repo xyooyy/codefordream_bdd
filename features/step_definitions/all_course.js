@@ -15,14 +15,13 @@ var stepDef = function() {
     this.When(/^select answer of course (.+)$/, function(answer,callback) {
         console.log('-----------answer-------------' + answer)
         this.browser.click('input[id=\"' + answer + '\"]')
-//            .pause(4000)
         callback();
     });
 
     this.Then(/^successful course$/,function(callback){
         var assert = this.assert;
         this.browser.click('#submit_answer')
-//            .pause(4000)
+            .pause(1000)
             .isExisting('p.hide#ansIncorrect',function(err,isExisting){
                 assert.ok(isExisting);
                 console.log('-----------此项测试成功-------------')
