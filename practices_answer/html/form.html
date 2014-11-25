@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"  />
+    <title>我是标题</title>
+
+    <!--勿修改此行注释下引入测试的代码 否则可能会对过关产生影响-->
+    <script type="text/javascript" src="../../../lib/require.js" data-main="../../../lib/main"></script>
+</head>
+<body>
+<!--从这里开始编写代码-->
+<form>
+    <fieldset style="width: 200px;">
+        <legend>基本信息</legend>
+        <p>姓名：<input id="name"/></p>
+        <p>年龄：<input id="age" type="number" min="0" max="100"/></p>
+        <p>邮箱：<input type="email" pattern="^.*@jimitec.com$"/></p>
+    </fieldset>
+    <fieldset style="width: 200px;">
+        <legend>个人简介</legend>
+        <textarea rows="10" cols="20" autofocus="autofocus"></textarea>
+    </fieldset>
+    <button type="submit">提交</button>
+</form>
+</body>
+
+</html>
