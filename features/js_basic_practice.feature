@@ -92,6 +92,10 @@ Feature: Test practice
     # js function
     | function_one                 | http://www.codefordream.com/courses/js_learning_camps/sections/section_6/practices/normal/practice_1     | ./practices_answer/js_basic_training_camp/js_function/function_one.js                   | practice.js                   |
     | function_two                 | http://www.codefordream.com/courses/js_learning_camps/sections/section_6/practices/normal/practice_2     | ./practices_answer/js_basic_training_camp/js_function/function_two.js                   | practice.js                   |
+    | call_one                     | http://www.codefordream.com/courses/js_learning_camps/sections/section_6/practices/normal/practice_3     | ./practices_answer/js_basic_training_camp/js_function/call_one.js                       | practice.js                   |
+    | call_two                     | http://www.codefordream.com/courses/js_learning_camps/sections/section_6/practices/normal/practice_4     | ./practices_answer/js_basic_training_camp/js_function/call_two.js                       | practice.js                   |
+    | variable_scope               | http://www.codefordream.com/courses/js_learning_camps/sections/section_6/practices/normal/practice_7     | ./practices_answer/js_basic_training_camp/js_function/variable_scope.js                 | practice.js                   |
+
 
   # js sicp
     # process and operation
@@ -138,6 +142,9 @@ Feature: Test practice
     | select                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_3/practices/normal/practice_3 | ./practices_answer/data_structures/binary_tree/select.js                                | binary_tree.js                |
     | delete                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_3/practices/normal/practice_4 | ./practices_answer/data_structures/binary_tree/delete.js                                | binary_tree.js                |
 
-
-
-
+    # list
+    | insert                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_2/practices/normal/practice_1 | ./practices_answer/data_structures/list/insert.js                                       | linked_list.js                |
+    | create                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_2/practices/normal/practice_2 | ./practices_answer/data_structures/list/create.js                                       | linked_list.js                |
+    | create_two                   | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_2/practices/normal/practice_3 | ./practices_answer/data_structures/list/create_two.js                                   | linked_list.js                |
+    | select                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_2/practices/normal/practice_4 | ./practices_answer/data_structures/list/select.js                                       | linked_list.js                |
+    | delete                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_2/practices/normal/practice_5 | ./practices_answer/data_structures/list/delete.js                                       | linked_list.js                |
