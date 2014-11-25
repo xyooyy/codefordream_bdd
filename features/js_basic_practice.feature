@@ -149,9 +149,9 @@ Feature: Test practice
     | select                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_2/practices/normal/practice_4         | ./practices_answer/data_structures/list/select.js                                       | linked_list.js                |
     | delete                       | http://www.codefordream.com/courses/js_intermediate_camps/sections/section_2/practices/normal/practice_5         | ./practices_answer/data_structures/list/delete.js                                       | linked_list.js                |
 
-  # angular_js 此测试只适应于无html且只改变当前单页的内容
+  # angular_js 此测试只适应于改变当前单页的内容
     | template_view                | http://www.codefordream.com/courses/angularjs/sections/section_angular_template_view/practices/normal/practice_1 | ./practices_answer/angular_js/template_view.js                                          | route.js                      |
     | variable_binding             | http://www.codefordream.com/courses/angularjs/sections/section_angular_data_binding/practices/normal/practice_1  | ./practices_answer/angular_js/variable_binding.js                                       | order_details_controller.js   |
     | function_binding             | http://www.codefordream.com/courses/angularjs/sections/section_angular_data_binding/practices/normal/practice_2  | ./practices_answer/angular_js/function_binding.js                                       | order_details_controller.js   |
     | ng_repeat                    | http://www.codefordream.com/courses/angularjs/sections/section_angular_ngRepeat/practices/normal/practice_1      | ./practices_answer/angular_js/ng_repeat.js                                              | choose_person_controller.js   |
-
+    | ng_show                      | http://www.codefordream.com/courses/angularjs/sections/section_angular_ngShow/practices/normal/practice_2        | ./practices_answer/angular_js/ng_show.html                                              | order_details.js   |

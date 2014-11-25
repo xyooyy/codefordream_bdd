@@ -39,7 +39,7 @@ var stepDef = function(){
         var assert = this.assert;
         this.browser.pause(2000)
                     .click('#submit_btn')
-                    .pause(4000)
+                    .pause(10000)
                     .isExisting('div.hide#fail_btn_grop',function(err,isExisting){
                 assert.ok(isExisting);
 
