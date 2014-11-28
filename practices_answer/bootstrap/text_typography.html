@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"  />
+    <title>我的bootstrap首页</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+        }
+        /*避免navbar遮挡住body的内容*/
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand " href="#" style="color: darkorange">
+                <span class="glyphicon glyphicon-globe" style="color: deepskyblue"></span>
+                我的主页
+            </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#"> 标签 </a></li>
+                <li><a href="#"> 时间轴 </a></li>
+                <li><a href="#"> 关于我们 </a></li>
+                <li><a href="#"> 友情链接 </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 账户 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人信息</a></li>
+                        <li><a href="#">设 置</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">退 出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-2">
+                <h2>道具:段落</h2>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <p>  　<big><em>如</em></big>《梁山伯与祝英台》中的酒杯、花瓶，形态逼真。《情探》中的龙王、神像,《北地王》中的先祖列宗，都用篾扎纸糊后彩绘，似庙里菩萨一般。《红楼梦》中的花篮、薰炉、立地花瓶等，都是既逼真又美观，令观者赏心悦目。越剧的道具<sup>[1]</sup>，具有“轻”“巧”“美”“牢”的艺术特点，为戏曲界同行所称道，如明角灯，各地不少兄弟剧种剧团，曾派人到上海越剧院来学习过道具制作。</p>
+                    <p>　　1981年9月，上海越剧院演出的《凄凉辽宫月》中的道具<sup>[2]</sup>(由技师李其实制作)，获首届上海戏剧节道具奖，首开道具获单项奖的先例<sup>[3]</sup>。</p>
+                </div>
+                <div class="row text-info">
+                    <div class="col-md-4">
+                        <h6>*注[1]:小歌班初期的“砌末”(道具)，都是日常生活用具，后期及绍兴文戏时期，模仿京剧、绍剧道具，并由“检场”人(越剧称“值台师傅”)管理。</h6>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>*注[2]:所用道具都放在一大木箱(俗称“百宝箱”)里。这些道具是向“堂中行头”师傅租来的。以后，主要演员有了“私房行头”，道具中的桌围、椅帔也成了主要演员必备的“私彩”。</h6>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>*注[3]:在戏剧悠长的历史中，这是一种极为罕见的殊荣，足以见证道具在现代戏剧中的地位之重。</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="text-center">
+    <p>&copy; Copyright 2014 <a href="http://www.jimitec.com">JimiTec</a>, for <a
+            href="http://www.codefordream.com">CodeForDream</a>.</p>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--勿修改此行注释下引入测试的代码 否则可能会对过关产生影响-->
+<script src="../specs/spec.js"></script>
+<script src="../specs/starter.js"></script>
+</body>
+</html>
