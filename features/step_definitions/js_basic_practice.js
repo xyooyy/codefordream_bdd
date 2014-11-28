@@ -37,9 +37,8 @@ var stepDef = function(){
 
     this.Then(/^successful challenge$/, function (callback) {
         var assert = this.assert;
-        this.browser.pause(2000)
-                    .click('#submit_btn')
-                    .pause(10000)
+        this.browser.click('#submit_btn')
+                    .pause(6000)
                     .isExisting('div.hide#fail_btn_grop',function(err,isExisting){
                 assert.ok(isExisting);
 

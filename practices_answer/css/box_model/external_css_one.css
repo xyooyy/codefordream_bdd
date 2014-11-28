@@ -1,0 +1,22 @@
+header {
+    border: 1px solid red;
+}
+.container {
+    border: 1px solid red;
+    overflow: hidden;
+}
+.sidebar {
+    float: left;
+    width: 16%;
+    padding: 0 2%;
+    background-color: #eee;
+}
+.main {
+    float: left;
+    width: 76%;
+    padding: 0 2%;
+}
+footer {
+    clear: both;
+    border: 1px solid red;
+}
